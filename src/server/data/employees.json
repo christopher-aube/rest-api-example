@@ -1,0 +1,12 @@
+[
+  {
+    "employeeId": "1",
+    "email": "me@chrisaube.com",
+    "firstName": "Chris",
+    "lastName": "Aube",
+    "department": "",
+    "salary": 80000,
+    "status": "",
+    "createdAt": ""
+  }
+]

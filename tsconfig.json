@@ -1,0 +1,7 @@
+{
+  "extends": "config-ts-react/tsconfig",
+  "compilerOptions": {
+    "types": ["@types/react", "@types/react-dom", "config-ts-react/src/typings"]
+  },
+  "include": ["./src/**/*.ts", "./src/**/*.tsx", "./types/*.d.ts"]
+}
