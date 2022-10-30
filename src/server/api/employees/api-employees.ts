@@ -17,9 +17,16 @@ export const init = (router: express.Router) => {
   });
 
   router.post(`${Route}/create`, (req, res) => {
-    const employee = create(req.body);
+    const createRes = create(req.body, employeeData);
 
-    employeeData.push(employee);
-    res.sendStatus(200);
+    if (createRes.error || !createRes.data) {
+      res.status(400);
+      res.send(createRes);
+      return;
+    }
+
+    employeeData.push(createRes.data.employee);
+    res.status(200);
+    res.send(createRes.data.employee);
   });
 };

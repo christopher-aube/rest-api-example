@@ -27,9 +27,16 @@ export const Page = () => {
         salary,
         status,
       })
-      .then(() => {
-        console.log('created');
-        handleUpdateEmployees();
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+         if (data.error) {
+          alert(data.message);
+          return;
+         }
+
+         handleUpdateEmployees();
       })
       .catch((e) => {
         console.error('failed to create employee');
