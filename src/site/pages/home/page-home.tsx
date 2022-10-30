@@ -6,18 +6,24 @@ export const Page = () => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [isReady, setIsReady] = useState(false);
-
+  console.log(1);
   useEffect(() => {
     if (isLoading || isReady) {
       return;
     }
-
-    fetch('http://localhost:5003/')
-      .then((res) => { return res.json() })
+    console.log(2);
+    fetch('http://localhost:5003/api/v1/employees')
+      .then((res) => {
+        return res.json();
+      })
       .then((data) => {
+        console.log(4);
         setData(data);
         setIsReady(true);
         setIsLoading(false);
+      })
+      .catch((e) => {
+        console.error('Failed to get data', e);
       })
 
     return () => {
