@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Employees } from '../../models';
 
 export const Path = '/home';
 
@@ -12,7 +13,7 @@ export const Page = () => {
       return;
     }
 
-    fetch('http://localhost:5003/api/v1/employees')
+    Employees.get()
       .then((res) => {
         return res.json();
       })
