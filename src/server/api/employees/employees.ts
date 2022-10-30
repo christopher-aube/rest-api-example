@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import { EmployeeData } from './employees.types';
+import { EmployeeData, EmployeeSearchParams } from './employees.types';
 import { datetime } from '../../utils';
 import { validator } from '../../services';
 
@@ -82,6 +82,39 @@ export const create = (
   };
 };
 
+export const search = (
+  params: EmployeeSearchParams,
+  employees: Array<EmployeeData>
+) => {
+  let sortBy = ['firstName', 'lastName'];
+  const validSortFields = [
+    'email',
+    'firstName',
+    'lastName',
+    'department',
+    'salary',
+    'status',
+    'createdAt',
+  ];
+  const filteredList: Array<EmployeeData> = [];
+
+  const checkValidSorts = (field: string) => {
+    return validSortFields.indexOf(field) !== -1;
+  };
+
+  if (params.sortBy && params.sortBy.length) {
+    sortBy = params.sortBy.filter(checkValidSorts);
+  }
+
+  return {
+    error: false,
+    data: {
+      employees: filteredList,
+    },
+  };
+};
+
 export default {
   create,
+  search,
 };

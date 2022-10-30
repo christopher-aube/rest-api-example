@@ -1,1 +1,4 @@
-export type { EmployeeData } from '../../../server/api/employees/employees.types';
+export type {
+  EmployeeData,
+  EmployeeSearchParams,
+} from '../../../server/api/employees/employees.types';

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import * as css from './_home.scss';
 import { Employees } from '../../models';
 
@@ -8,12 +8,32 @@ export const Page = () => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [isReady, setIsReady] = useState(false);
+  const [searchTerms, setSearchTerms] = useState('');
   const [email, setEmail] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [department, setDepartment] = useState('');
   const [salary, setSalary] = useState(0);
   const [status, setStatus] = useState('');
+  let searchTimeout = useRef<ReturnType<typeof setTimeout>>();
+
+  const handleSearchEmployees = (ev: React.FormEvent<HTMLInputElement>) => {
+    const val = ev.currentTarget.value;
+
+    if (searchTimeout) {
+      clearTimeout(searchTimeout.current);
+    }
+
+    setSearchTerms(val)
+
+    searchTimeout.current = setTimeout(() => {
+      Employees.search({
+        search: {
+          firstName: val,
+        }
+      })
+    }, 250);
+  };
 
   const handleCreateEmployee = (ev: React.MouseEvent<HTMLButtonElement>) => {
     ev.preventDefault();
@@ -111,7 +131,7 @@ export const Page = () => {
       <aside className={css.employeeForm}>
 
        <div className={css.control}>
-        <input type="text" placeholder="...Search employees" />
+        <input type="text" placeholder="...Search employees" value={searchTerms} onChange={handleSearchEmployees}/>
        </div>
 
         <div>

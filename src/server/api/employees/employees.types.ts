@@ -8,3 +8,13 @@ export type EmployeeData = Partial<{
   status: string;
   createdAt: string;
 }>;
+
+export type EmployeeSearchParams = {
+  search: {
+    firstName?: string;
+    lastName?: string;
+    department?: string;
+    status?: string;
+  };
+  sortBy?: [keyof Omit<EmployeeData, 'employeeId'>];
+};

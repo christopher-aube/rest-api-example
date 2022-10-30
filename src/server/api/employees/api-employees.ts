@@ -1,7 +1,7 @@
 import express from 'express';
 import data from '../../data/employees.json';
 import { EmployeeData } from './employees.types';
-import { create } from './employees';
+import { create, search } from './employees';
 
 export const Route = '/employees';
 
@@ -28,5 +28,18 @@ export const init = (router: express.Router) => {
     employeeData.push(createRes.data.employee);
     res.status(200);
     res.send(createRes.data.employee);
+  });
+
+  router.post(`${Route}/search`, (req, res) => {
+    const searchRes = search(req.body, employeeData);
+
+    if (searchRes.error || !searchRes.data) {
+      res.status(400);
+      res.send(searchRes);
+      return;
+    }
+
+    res.status(200);
+    res.send(searchRes.data.employees);
   });
 };

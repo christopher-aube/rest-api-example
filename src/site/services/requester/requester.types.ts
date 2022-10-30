@@ -1,8 +1,10 @@
+export type PayloadData =
+  | string
+  | number
+  | boolean
+  | RequesterPayload
+  | Array<PayloadData>;
+
 export type RequesterPayload = {
-  [key: string]:
-    | string
-    | number
-    | boolean
-    | RequesterPayload
-    | Array<RequesterPayload>;
+  [key: string]: PayloadData;
 };
