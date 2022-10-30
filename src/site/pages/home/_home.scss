@@ -1,0 +1,33 @@
+.home-page {
+  display: flex;
+
+  .employee-form {
+    width: 300px;
+    padding: 1rem 1rem 2rem;
+    border-right: 1px solid;
+
+    & form {
+      border: 1px solid;
+      border-left: none;
+      border-right: none;
+      padding: 1rem 0;
+      margin: 1rem 0;
+    }
+
+    .control {
+      margin-bottom: 1rem;
+
+      & label {
+        display: block;
+      }
+
+      & input {
+        width: 250px;
+      }
+    }
+  }
+
+  .employee-list {
+    padding: 2rem;
+  }
+}

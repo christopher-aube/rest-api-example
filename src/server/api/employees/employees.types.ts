@@ -5,5 +5,6 @@ export type EmployeeData = Partial<{
   lastName: string;
   department: string;
   salary: number;
+  status: string;
   createdAt: string;
 }>;

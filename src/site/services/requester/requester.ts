@@ -15,6 +15,7 @@ export const post = (endpoint: string, payload: RequesterPayload) => {
     },
     body: JSON.stringify(payload),
   };
+  console.log('opts', opts);
   return fetch(`${apiRoute}${endpoint}`, opts);
 };
 

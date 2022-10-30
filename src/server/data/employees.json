@@ -1,12 +1,12 @@
 [
   {
-    "employeeId": "1",
+    "employeeId": "e6d6e56d-9e76-4770-a716-7d6ef71b228a",
     "email": "me@chrisaube.com",
     "firstName": "Chris",
     "lastName": "Aube",
-    "department": "",
+    "department": "Product",
     "salary": 80000,
-    "status": "",
-    "createdAt": ""
+    "status": "inactive",
+    "createdAt": "2022-10-30T19:40:30.715Z"
   }
 ]
