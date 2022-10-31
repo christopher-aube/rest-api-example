@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { PageConfigs } from './app.types';
 import * as pageConfigs from '../pages';
 
-const employeesPageRoute = pageConfigs.Employees.Path;
+const employeesPageRoute = pageConfigs.Employees.Path.replace('*', '');
 
 export const App = () => {
   const configs = pageConfigs as PageConfigs;
