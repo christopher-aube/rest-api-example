@@ -1,6 +1,7 @@
 import express from 'express';
 import data from '../../data/employees.json';
 import { EmployeeData } from './employees.types';
+import { list } from '../../utils';
 import { create, search } from './employees';
 
 export const Route = '/employees';
@@ -9,7 +10,7 @@ export const init = (router: express.Router) => {
   const employeeData: Array<EmployeeData> = data;
 
   router.get(Route, (req, res) => {
-    res.send(employeeData);
+    res.send(list.sortBy(employeeData, ['firstName']));
   });
 
   router.get(`${Route}/:id`, (req, res) => {

@@ -9,31 +9,28 @@ export const sortBy = (
 
   return list.sort((a, b) => {
     let result = 0;
-    let valA;
-    let valB;
+    let valA: any;
+    let valB: any;
 
     for (let i = 0; i < fieldsLn; i++) {
       result = 0;
       valA = pointer(a, fields[i]);
       valB = pointer(b, fields[i]);
 
-      if (valA === undefined) {
-        result = 1;
-      } else if (valB === undefined) {
-        result = -1;
-      } else if (valA < valB) {
-        result = 1;
-      } else if (valA > valB) {
-        result = -1;
+      if (typeof valA === 'string') {
+        valA = valA.toLowerCase();
       }
 
-      if (reverse) {
-        result = result * -1;
+      if (typeof valB === 'string') {
+        valB = valB.toLowerCase();
       }
 
-      if (result !== 0) {
-        break;
+      if (valA === valB) {
+        return 0;
       }
+
+      result = valA < valB ? -1 : 1;
+      return reverse ? result * -1 : result;
     }
 
     return result;
