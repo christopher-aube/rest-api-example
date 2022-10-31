@@ -1,4 +1,4 @@
-import { JSON_DATA, pointer } from './json';
+import { JSON_DATA, JSON_VALUE, pointer } from './json';
 
 export const sortBy = (
   list: Array<JSON_DATA>,
@@ -35,6 +35,30 @@ export const sortBy = (
 
     return result;
   });
+};
+
+export const indexOf = (
+  list: Array<JSON_DATA>,
+  field: string,
+  val: JSON_VALUE
+) => {
+  let res;
+  let idx = -1;
+
+  for (let i = 0, ii = list.length; i < ii; i++) {
+    res = pointer(list[i], field) as JSON_VALUE;
+
+    if (res === null || res === undefined) {
+      continue;
+    }
+
+    if (res === val) {
+      idx = i;
+      break;
+    }
+  }
+
+  return idx;
 };
 
 export default {

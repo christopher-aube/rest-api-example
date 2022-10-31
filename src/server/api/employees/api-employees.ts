@@ -14,8 +14,15 @@ export const init = (router: express.Router) => {
   });
 
   router.get(`${Route}/:id`, (req, res) => {
-    res.status(404);
-    res.send(employeeData[0]);
+    const id = req.params.id;
+    const idx = list.indexOf(employeeData, 'employeeId', id);
+
+    if (idx === -1) {
+      res.sendStatus(404);
+    } else {
+      res.status(200);
+      res.send(employeeData[idx]);
+    }
   });
 
   router.post(`${Route}/create`, (req, res) => {
