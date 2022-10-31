@@ -2,6 +2,16 @@
 
 This repo shows how to create a server with a basic REST API and a frontend app to consume it.
 
+## Notable Tech
+
+#### [Yarn](https://yarnpkg.com/) - dependency management
+
+#### [Parcel](https://parceljs.org/) - build tool
+
+#### [Typescript](https://www.typescriptlang.org/) - code quality
+
+#### [React](https://reactjs.org/) - functional UI components
+
 ## Getting Started
 
 Before you can run you'll need to install some dependencies `yarn install`.
