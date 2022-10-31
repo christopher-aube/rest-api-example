@@ -117,7 +117,7 @@ export const search = (
     if (hasFirstName) {
       const firstNameFilter = {
         field: 'firstName',
-        op: 'EQ',
+        op: 'CT',
         value: params.search.firstName,
       } as json.JSON_FILTER_Comparison;
 
@@ -127,7 +127,7 @@ export const search = (
     if (hasLastName) {
       const lastNameFilter = {
         field: 'lastName',
-        op: 'EQ',
+        op: 'CT',
         value: params.search.lastName,
       } as json.JSON_FILTER_Comparison;
 
@@ -137,7 +137,7 @@ export const search = (
     if (hasDepartment) {
       const departmentFilter = {
         field: 'department',
-        op: 'EQ',
+        op: 'CT',
         value: params.search.department,
       } as json.JSON_FILTER_Comparison;
 
@@ -147,7 +147,7 @@ export const search = (
     if (hasStatus) {
       const statusFilter = {
         field: 'status',
-        op: 'EQ',
+        op: 'CT',
         value: params.search.status,
       } as json.JSON_FILTER_Comparison;
 

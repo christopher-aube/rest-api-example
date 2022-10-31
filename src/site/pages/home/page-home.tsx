@@ -35,7 +35,7 @@ export const Page = () => {
         return res.json();
       })
       .then((data) => {
-        console.log(data);
+        setData(data);
       })
       .catch((e) => {
         console.error('failed to search employees');

@@ -1,9 +1,4 @@
-import {
-  JSON_FILTER,
-  JSON_DATA,
-  JSON_VALUE,
-  JSON_FILTER_Comparison,
-} from './json.types';
+import { JSON_FILTER, JSON_DATA, JSON_FILTER_Comparison } from './json.types';
 import { pointer } from './json-pointer';
 
 const validate = (
@@ -16,6 +11,13 @@ const validate = (
   switch (op) {
     case 'EQ':
       isMatch = value === compare;
+      break;
+    case 'CT':
+      if (typeof compare !== 'string' || typeof value !== 'string') {
+        return isMatch;
+      }
+
+      isMatch = compare.toLowerCase().indexOf(value.toLowerCase()) !== -1;
       break;
   }
 
@@ -31,7 +33,7 @@ const match = (item: JSON_DATA, config: JSON_FILTER_Comparison) => {
 
   const _val = value as JSON_FILTER_Comparison['value'];
 
-  return validate(config.op, config.value, _val);
+  return validate(config.op, _val, config.value);
 };
 
 const matchAny = (item: JSON_DATA, filters: Array<JSON_FILTER_Comparison>) => {

@@ -11,9 +11,14 @@ export type JSON_DATA = {
 
 export type JSON_FILTER_Operator = 'EQ';
 
+/**
+ * EQ: Equals
+ * CT: contains
+ */
+
 export type JSON_FILTER_Comparison = {
   field: string;
-  op: 'EQ';
+  op: 'EQ' | 'CT';
   value?: string | number | boolean;
 };
 
