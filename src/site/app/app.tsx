@@ -3,7 +3,7 @@ import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import { PageConfigs } from './app.types';
 import * as pageConfigs from '../pages';
 
-const homePageRoute = pageConfigs.Home.Path;
+const employeesPageRoute = pageConfigs.Employees.Path;
 
 export const App = () => {
   const configs = pageConfigs as PageConfigs;
@@ -19,7 +19,7 @@ export const App = () => {
             return <Route key={idx} path={config.Path} element={<config.Page />} />
           })
         }
-        <Route path="*" element={<Navigate to={homePageRoute} />} />
+        <Route path="*" element={<Navigate to={employeesPageRoute} />} />
       </Routes>
     </Router>
   );

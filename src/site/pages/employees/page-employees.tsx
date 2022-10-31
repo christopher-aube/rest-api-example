@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
-import * as css from './_home.scss';
+import * as css from './_employees.scss';
 import { Employees } from '../../models';
 
-export const Path = '/home';
+export const Path = '/employees';
 
 export const Page = () => {
   const [data, setData] = useState({});
@@ -138,7 +138,7 @@ export const Page = () => {
   }, [isLoading, isReady])
 
   return (
-    <div className={css.homePage}>
+    <div className={css.employeesPage}>
       <aside className={css.employeeForm}>
 
        <div className={css.control}>

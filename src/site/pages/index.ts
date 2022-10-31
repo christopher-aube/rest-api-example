@@ -1,1 +1,1 @@
-export * as Home from './home';
+export * as Employees from './employees';
