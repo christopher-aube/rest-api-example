@@ -28,7 +28,7 @@ The server provides a rest interface at `/api/v1`.
 
 #### Schema
 
-```json
+```javascript
 {
   employeeId: string, // uuid
   email: string,
@@ -55,7 +55,7 @@ All fields in the schema are required, with exceptions to employeeId and created
 
 You must pass the following data object with your search:
 
-```json
+```javascript
 {
   search: { // each of the following is optional
     firstName: string,
