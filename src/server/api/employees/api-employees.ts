@@ -14,6 +14,7 @@ export const init = (router: express.Router) => {
   });
 
   router.get(`${Route}/:id`, (req, res) => {
+    res.status(404);
     res.send(employeeData[0]);
   });
 
