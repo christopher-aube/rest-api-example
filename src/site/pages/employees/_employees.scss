@@ -96,4 +96,20 @@
       }
     }
   }
+
+  .employee-card {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    flex-direction: column;
+
+    & .info {
+      margin-bottom: 1rem;
+    }
+
+    & .label {
+      display: block;
+      font-variant-caps: small-caps;
+    }
+  }
 }

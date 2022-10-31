@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import * as css from '../_employees.scss';
 import { Employees } from '../../../models';
 
 const ProfileCard = ({ profile }: { profile: Employees.EmployeeData }) => {
   const {
+    employeeId,
     email,
     firstName,
     lastName,
@@ -14,32 +16,38 @@ const ProfileCard = ({ profile }: { profile: Employees.EmployeeData }) => {
   } = profile;
 
   return (
-    <>
-      <h1>{firstName} {lastName}</h1>
+    <div className={css.employeesPage}>
+      <div className={css.employeeCard}>
+        <h1>{firstName} {lastName}</h1>
 
-      <div>
         <div>
-          <div>Email:</div>
-          <div>{email}</div>
-        </div>
-        <div>
-          <div>Department:</div>
-          <div>{department}</div>
-        </div>
-        <div>
-          <div>Salary</div>
-          <div>{salary}</div>
-        </div>
-        <div>
-          <div>Status</div>
-          <div>{status}</div>
-        </div>
-        <div>
-          <div>Created At:</div>
-          <div>{createdAt}</div>
+          <div className={css.info}>
+            <div className={css.label}>email</div>
+            <div>{email}</div>
+          </div>
+          <div className={css.info}>
+            <div className={css.label}>department</div>
+            <div>{department}</div>
+          </div>
+          <div className={css.info}>
+            <div className={css.label}>salary</div>
+            <div>{salary}</div>
+          </div>
+          <div className={css.info}>
+            <div className={css.label}>status</div>
+            <div>{status}</div>
+          </div>
+          <div className={css.info}>
+            <div className={css.label}>created at</div>
+            <div>{createdAt}</div>
+          </div>
+          <div className={css.info}>
+            <div className={css.label}>id</div>
+            <div>{employeeId}</div>
+          </div>
         </div>
       </div>
-    </>
+    </div>
   )
 };
 
