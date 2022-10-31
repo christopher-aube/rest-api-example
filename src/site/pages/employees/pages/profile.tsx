@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { Employees } from '../../../models';
 
 const ProfileCard = ({ profile }: { profile: Employees.EmployeeData }) => {
@@ -97,6 +97,9 @@ export const Profile = () => {
 
   return (
     <main>
+      <div>
+        <Link to="/employees">Back to all Employees</Link>
+      </div>
       {!isReady ?
         <></> :
         (notFound ?
