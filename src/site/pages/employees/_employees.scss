@@ -1,13 +1,15 @@
 .employees-page {
   display: flex;
+  height: 100vh;
+  overflow: hidden;
 
   .employee-form {
     width: 300px;
     padding: 1rem 1rem 2rem;
-    border-right: 1px solid;
+    border-right: 1px solid var(--bg-accent);
 
     & form {
-      border: 1px solid;
+      border: 1px solid var(--bg-accent);;
       border-left: none;
       border-right: none;
       padding: 1rem 0;
@@ -19,15 +21,79 @@
 
       & label {
         display: block;
+        font-variant-caps: small-caps;
       }
 
       & input {
-        width: 250px;
+        width: 100%;
+        background-color: var(--bg-dark);
+        color: inherit;
+        padding: 0.5rem;
+        border-color: transparent;
+        border-style: solid;
+        border-color: var(--bg-accent);
+        border-radius: 0.25rem;
+
+        &::placeholder {
+          color: var(--color-muted);
+        }
+
+        &:active,
+        &:focus,
+        &:focus-visible {
+          border-color: var(--color-accent);
+          outline: none;
+        }
+
+        &:-webkit-autofill,
+        &:-webkit-autofill:hover,
+        &:-webkit-autofill:focus,
+        &:-webkit-autofill:active {
+          transition: background-color 5000s ease-in-out 0s;
+          -webkit-text-fill-color: var(--color-default);
+        }
       }
     }
   }
 
   .employee-list {
     padding: 2rem;
+    overflow-y: auto;
+    width: calc(100% - 300px);
+  }
+
+  button {
+    padding: 0.5rem;
+    width: 100%;
+    background-color: var(--bg-muted);
+    border-style: solid;
+    border-color: var(--bg-btn);
+    border-radius: 0.25rem;
+    color: var(--color-btn);
+
+    &:hover {
+      background-color: var(--bg-btn-hover);
+      border-color: var(--border-btn-hover);
+    }
+
+    &:active {
+      background-color: var(--bg-muted);
+    }
+
+    &[type="submit"] {
+      color: #ffffff;
+      background-color: var(--bg-btn-primary);
+      border-color: var(--border-btn-primary);
+
+      &:hover {
+        background-color: var(--bg-btn-primary-hover);
+        border-color: var(--border-btn-primary-hover);
+      }
+
+      &:active {
+        background-color: var(--bg-btn-primary);
+        border-color: var(--border-btn-primary);
+      }
+    }
   }
 }

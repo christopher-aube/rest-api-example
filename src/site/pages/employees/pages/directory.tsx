@@ -140,38 +140,38 @@ export const Directory = () => {
       <aside className={css.employeeForm}>
 
        <div className={css.control}>
-        <input type="text" placeholder="...Search employees" value={searchTerms} onChange={handleSearchEmployees}/>
+        <input type="text" className={css.search} placeholder="...Search employees" value={searchTerms} onChange={handleSearchEmployees}/>
        </div>
 
         <div>
           <form>
             <div className={css.control}>
-              <label htmlFor="employee-email">Email</label>
+              <label htmlFor="employee-email">email</label>
               <input type="text" id="employee-email" value={email} onChange={handleEmailUpdate}/>
             </div>
 
             <div className={css.control}>
-              <label htmlFor="employee-first-name">First Name</label>
+              <label htmlFor="employee-first-name">first name</label>
               <input type="text" id="employee-first-name" value={firstName} onChange={handleFirstNameUpdate}/>
             </div>
 
             <div className={css.control}>
-              <label htmlFor="employee-last-name">Last Name</label>
+              <label htmlFor="employee-last-name">last name</label>
               <input type="text" id="employee-first-name" value={lastName} onChange={handleLastNameUpdate}/>
             </div>
 
             <div className={css.control}>
-              <label htmlFor="employee-department">Department</label>
+              <label htmlFor="employee-department">department</label>
               <input type="text" id="employee-department" value={department} onChange={handleDepartmentNameUpdate}/>
             </div>
 
             <div className={css.control}>
-              <label htmlFor="employee-salary">Salary</label>
+              <label htmlFor="employee-salary">salary</label>
               <input type="number" id="employee-salary" value={salary} onChange={handleSalaryNameUpdate}/>
             </div>
 
             <div className={css.control}>
-              <label htmlFor="employee-status">Status</label>
+              <label htmlFor="employee-status">status</label>
               <input type="text" id="employee-status" value={status} onChange={handleStatusNameUpdate}/>
             </div>
 
