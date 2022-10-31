@@ -6,7 +6,9 @@ This repo shows how to create a server with a basic REST API and a frontend app 
 
 Before you can run you'll need to install some dependencies `yarn install`.
 
-After that completes, you can start the app with `yarn start`.
+After that completes, you can start the app and server with `yarn start`.
+
+Alternatively, you can just start the server with `yarn start:server`.
 
 ## Server
 

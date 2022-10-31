@@ -4,10 +4,11 @@
   "description": "",
   "scripts": {
     "start:site": "parcel serve --target site --no-cache --port 5001 --open",
-    "start:server": "parcel watch --target server --port 5002 --no-cache",
+    "watch:server": "parcel watch --target server --port 5002 --no-cache",
     "reload:backend": "wait-on dist/server.js && nodemon --watch dist/server.js --exec node dist/server.js",
     "prestart": "rimraf dist && rimraf ../.parcel-cache",
-    "start": "cross-env SERVER_PORT=5003 concurrently \"yarn run start:site\" \"yarn run start:server\" \"yarn run reload:backend\""
+    "start": "cross-env SERVER_PORT=5003 concurrently \"yarn run start:site\" \"yarn run watch:server\" \"yarn run reload:backend\"",
+    "start:server": "cross-env SERVER_PORT=5003 concurrently \"yarn run watch:server\" \"yarn run reload:backend\""
   },
   "repository": {
     "type": "git",
