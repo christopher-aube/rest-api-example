@@ -30,7 +30,10 @@ export const Page = () => {
       Employees.search({
         search: {
           firstName: val,
-        }
+          lastName: val,
+          department: val,
+          status: val,
+        },
       }).then((res) => {
         return res.json();
       })
