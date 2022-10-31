@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 import { EmployeeData, EmployeeSearchParams } from './employees.types';
-import { datetime, json } from '../../utils';
+import { datetime, json, list } from '../../utils';
 import { validator } from '../../services';
 
 export const create = (
@@ -157,20 +157,20 @@ export const search = (
     return json.filterAll(employees, [filter]);
   };
 
-  if (params.sortBy && params.sortBy.length) {
-    sortBy = params.sortBy.filter(checkValidSorts);
-  }
-
   if (isNotDefined) {
     filteredList = employees;
   } else {
     filteredList = filterEmployees();
   }
 
+  if (params.sortBy && params.sortBy.length) {
+    sortBy = params.sortBy.filter(checkValidSorts);
+  }
+
   return {
     error: false,
     data: {
-      employees: filteredList,
+      employees: list.sortBy(filteredList, sortBy),
     },
   };
 };
