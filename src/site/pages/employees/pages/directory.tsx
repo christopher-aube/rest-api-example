@@ -3,7 +3,7 @@ import * as css from '../_employees.scss';
 import { Employees } from '../../../models';
 
 export const Directory = () => {
-  const [data, setData] = useState({});
+  const [data, setData] = useState<Array<Employees.EmployeeData>>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isReady, setIsReady] = useState(false);
   const [searchTerms, setSearchTerms] = useState('');
@@ -71,6 +71,31 @@ export const Directory = () => {
         console.error('failed to create employee');
       });
   };
+
+  const displayFormat = (employees: Array<Employees.EmployeeData>) => {
+    return (
+      <>
+      {`[`}
+        {employees.map((employee) => {
+          const profileLink = `/employees/${employee.employeeId}`;
+          return (
+            <div>
+              &nbsp;&nbsp;{`{\n`}
+              &nbsp;&nbsp;&nbsp;&nbsp;"employeeId": <a href={profileLink}>{employee.employeeId}</a>
+              {`\n`}&nbsp;&nbsp;&nbsp;&nbsp;"email": {employee.email}
+              {`\n`}&nbsp;&nbsp;&nbsp;&nbsp;"firstName": {employee.firstName}
+              {`\n`}&nbsp;&nbsp;&nbsp;&nbsp;"lastName": {employee.lastName}
+              {`\n`}&nbsp;&nbsp;&nbsp;&nbsp;"department": {employee.department}
+              {`\n`}&nbsp;&nbsp;&nbsp;&nbsp;"salary": {employee.salary}
+              {`\n`}&nbsp;&nbsp;&nbsp;&nbsp;"status": {employee.status}
+              {`\n`}&nbsp;&nbsp;{`}`}
+            </div>
+          );
+        })}
+      {`]`}
+      </>
+    )
+  }
 
   const handleUpdateEmployees = () => {
     Employees.get()
@@ -186,7 +211,7 @@ export const Directory = () => {
         </div>
       </aside>
       <main className={css.employeeList}>
-        <pre>{JSON.stringify(data, null, 2)}</pre>
+        <pre>{displayFormat(data)}</pre>
       </main>
     </div>
   )
