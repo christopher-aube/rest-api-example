@@ -16,35 +16,33 @@ const ProfileCard = ({ profile }: { profile: Employees.EmployeeData }) => {
   } = profile;
 
   return (
-    <div className={css.employeesPage}>
-      <div className={css.employeeCard}>
-        <h1>{firstName} {lastName}</h1>
+    <div className={css.employeeCard}>
+      <h1>{firstName} {lastName}</h1>
 
-        <div>
-          <div className={css.info}>
-            <div className={css.label}>email</div>
-            <div>{email}</div>
-          </div>
-          <div className={css.info}>
-            <div className={css.label}>department</div>
-            <div>{department}</div>
-          </div>
-          <div className={css.info}>
-            <div className={css.label}>salary</div>
-            <div>{salary}</div>
-          </div>
-          <div className={css.info}>
-            <div className={css.label}>status</div>
-            <div>{status}</div>
-          </div>
-          <div className={css.info}>
-            <div className={css.label}>created at</div>
-            <div>{createdAt}</div>
-          </div>
-          <div className={css.info}>
-            <div className={css.label}>id</div>
-            <div>{employeeId}</div>
-          </div>
+      <div>
+        <div className={css.info}>
+          <div className={css.label}>email</div>
+          <div>{email}</div>
+        </div>
+        <div className={css.info}>
+          <div className={css.label}>department</div>
+          <div>{department}</div>
+        </div>
+        <div className={css.info}>
+          <div className={css.label}>salary</div>
+          <div>{salary}</div>
+        </div>
+        <div className={css.info}>
+          <div className={css.label}>status</div>
+          <div>{status}</div>
+        </div>
+        <div className={css.info}>
+          <div className={css.label}>created at</div>
+          <div>{createdAt}</div>
+        </div>
+        <div className={css.info}>
+          <div className={css.label}>id</div>
+          <div>{employeeId}</div>
         </div>
       </div>
     </div>
@@ -104,8 +102,8 @@ export const Profile = () => {
   }, [isLoading, isReady]);
 
   return (
-    <main>
-      <div>
+    <main className={css.employeesPage}>
+      <div className={css.backLink}>
         <Link to="/employees">Back to all Employees</Link>
       </div>
       {!isReady ?
