@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 import { EmployeeData, EmployeeSearchParams } from './employees.types';
-import { datetime } from '../../utils';
+import { datetime, json } from '../../utils';
 import { validator } from '../../services';
 
 export const create = (
@@ -96,14 +96,75 @@ export const search = (
     'status',
     'createdAt',
   ];
-  const filteredList: Array<EmployeeData> = [];
+  let filteredList: Array<EmployeeData> = [];
+  const hasFirstName = validator.notEmpty(params.search.firstName);
+  const hasLastName = validator.notEmpty(params.search.lastName);
+  const hasDepartment = validator.notEmpty(params.search.department);
+  const hasStatus = validator.notEmpty(params.search.status);
+  const isNotDefined =
+    !hasFirstName && !hasLastName && !hasDepartment && !hasStatus;
 
   const checkValidSorts = (field: string) => {
     return validSortFields.indexOf(field) !== -1;
   };
 
+  const filterEmployees = () => {
+    const filter: json.JSON_FILTER_OR = {
+      op: 'OR',
+      value: [],
+    };
+
+    if (hasFirstName) {
+      const firstNameFilter = {
+        field: 'firstName',
+        op: 'EQ',
+        value: params.search.firstName,
+      } as json.JSON_FILTER_Comparison;
+
+      filter.value.push(firstNameFilter);
+    }
+
+    if (hasLastName) {
+      const lastNameFilter = {
+        field: 'lastName',
+        op: 'EQ',
+        value: params.search.lastName,
+      } as json.JSON_FILTER_Comparison;
+
+      filter.value.push(lastNameFilter);
+    }
+
+    if (hasDepartment) {
+      const departmentFilter = {
+        field: 'department',
+        op: 'EQ',
+        value: params.search.department,
+      } as json.JSON_FILTER_Comparison;
+
+      filter.value.push(departmentFilter);
+    }
+
+    if (hasStatus) {
+      const statusFilter = {
+        field: 'status',
+        op: 'EQ',
+        value: params.search.status,
+      } as json.JSON_FILTER_Comparison;
+
+      filter.value.push(statusFilter);
+    }
+
+    return json.filterAll(employees, [filter]);
+  };
+
   if (params.sortBy && params.sortBy.length) {
     sortBy = params.sortBy.filter(checkValidSorts);
+  }
+
+  if (isNotDefined) {
+    filteredList = employees;
+  } else {
+    filteredList = filterEmployees();
   }
 
   return {

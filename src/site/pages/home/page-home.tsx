@@ -31,6 +31,14 @@ export const Page = () => {
         search: {
           firstName: val,
         }
+      }).then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((e) => {
+        console.error('failed to search employees');
       })
     }, 250);
   };

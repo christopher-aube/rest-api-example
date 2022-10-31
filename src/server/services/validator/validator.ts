@@ -1,9 +1,11 @@
 import { JSON_DATA } from './validator.types';
 
-export const notEmpty = (val?: string | number) => {
-  const isDefined = val !== null && val !== undefined;
+export const isDefined = (val: any) => {
+  return val !== null && val !== undefined;
+};
 
-  if (!isDefined) {
+export const notEmpty = (val?: string | number) => {
+  if (!isDefined(val)) {
     return false;
   }
 
@@ -48,6 +50,7 @@ export const isUnique = (
 };
 
 export default {
+  isDefined,
   notEmpty,
   isUnique,
 };
