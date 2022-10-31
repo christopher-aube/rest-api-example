@@ -3,7 +3,11 @@ import { rq } from '../../services';
 
 const Route = '/employees';
 
-export const get = () => {
+export const get = (id?: string) => {
+  if (id) {
+    return rq.get(`${Route}/${id}`);
+  }
+
   return rq.get(Route);
 };
 
